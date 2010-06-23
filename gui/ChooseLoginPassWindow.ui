@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ChooseLoginPassWindow</class>
+ <widget class="QDialog" name="ChooseLoginPassWindow">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>125</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Choose login an passes to use</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../ressources/ressources.qrc">
+    <normaloff>:/img/User_32.png</normaloff>:/img/User_32.png</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout"/>
+ </widget>
+ <resources>
+  <include location="../../ressources/ressources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EditServerWindow</class>
+ <widget class="QWidget" name="EditServerWindow">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>357</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Modify server configuration</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../ressources/ressources.qrc">
+    <normaloff>:/img/Pencil-32.png</normaloff>:/img/Pencil-32.png</iconset>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <property name="fieldGrowthPolicy">
+    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+   </property>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="minimumSize">
+      <size>
+       <width>184</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Host (IP or Domain Name) :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="leHost"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Port :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QSpinBox" name="sbPort">
+     <property name="maximum">
+      <number>2147483647</number>
+     </property>
+     <property name="value">
+      <number>22</number>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Label for the server :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="leLabel"/>
+   </item>
+   <item row="4" column="1">
+    <widget class="QRadioButton" name="rbUseExist">
+     <property name="text">
+      <string>Use existing login/password</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QRadioButton" name="rbCreate">
+     <property name="text">
+      <string>Use new login/password</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QRadioButton" name="rbRSA">
+     <property name="text">
+      <string>Use RSA key</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="lLoginPass">
+     <property name="text">
+      <string>Login and password to use :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QComboBox" name="cbLoginPass"/>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="lLogin">
+     <property name="text">
+      <string>Login :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
+    <widget class="QLineEdit" name="leLogin"/>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="lPassword">
+     <property name="text">
+      <string>Password :</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="1">
+    <widget class="QLineEdit" name="lePassword"/>
+   </item>
+   <item row="10" column="1">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QRadioButton" name="rbModify">
+     <property name="text">
+      <string>Modify current login/password</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../ressources/ressources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>EditServerWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>319</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbUseExist</sender>
+   <signal>released()</signal>
+   <receiver>lLoginPass</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>99</x>
+     <y>204</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbUseExist</sender>
+   <signal>released()</signal>
+   <receiver>cbLoginPass</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>413</x>
+     <y>207</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbUseExist</sender>
+   <signal>released()</signal>
+   <receiver>lLogin</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>30</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbUseExist</sender>
+   <signal>released()</signal>
+   <receiver>lPassword</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>43</x>
+     <y>269</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbUseExist</sender>
+   <signal>released()</signal>
+   <receiver>leLogin</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>413</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbUseExist</sender>
+   <signal>released()</signal>
+   <receiver>lePassword</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>413</x>
+     <y>271</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbCreate</sender>
+   <signal>released()</signal>
+   <receiver>lLoginPass</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>99</x>
+     <y>204</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbCreate</sender>
+   <signal>released()</signal>
+   <receiver>cbLoginPass</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>413</x>
+     <y>207</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbCreate</sender>
+   <signal>released()</signal>
+   <receiver>lLogin</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>30</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbCreate</sender>
+   <signal>released()</signal>
+   <receiver>lPassword</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>43</x>
+     <y>269</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbCreate</sender>
+   <signal>released()</signal>
+   <receiver>leLogin</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>413</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbCreate</sender>
+   <signal>released()</signal>
+   <receiver>lePassword</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>413</x>
+     <y>271</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbRSA</sender>
+   <signal>released()</signal>
+   <receiver>lLoginPass</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>99</x>
+     <y>204</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbRSA</sender>
+   <signal>released()</signal>
+   <receiver>cbLoginPass</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>413</x>
+     <y>207</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbRSA</sender>
+   <signal>released()</signal>
+   <receiver>lLogin</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>30</x>
+     <y>237</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbRSA</sender>
+   <signal>released()</signal>
+   <receiver>lPassword</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>43</x>
+     <y>269</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbRSA</sender>
+   <signal>released()</signal>
+   <receiver>leLogin</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>413</x>
+     <y>239</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbRSA</sender>
+   <signal>released()</signal>
+   <receiver>lePassword</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>413</x>
+     <y>176</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>413</x>
+     <y>271</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbModify</sender>
+   <signal>released()</signal>
+   <receiver>lLoginPass</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>99</x>
+     <y>233</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbModify</sender>
+   <signal>released()</signal>
+   <receiver>cbLoginPass</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>414</x>
+     <y>236</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbModify</sender>
+   <signal>released()</signal>
+   <receiver>lLogin</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>30</x>
+     <y>266</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbModify</sender>
+   <signal>released()</signal>
+   <receiver>lPassword</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>43</x>
+     <y>298</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbModify</sender>
+   <signal>released()</signal>
+   <receiver>leLogin</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>414</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rbModify</sender>
+   <signal>released()</signal>
+   <receiver>lePassword</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>414</x>
+     <y>300</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
